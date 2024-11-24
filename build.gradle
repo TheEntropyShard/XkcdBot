@@ -1,0 +1,47 @@
+plugins {
+    id "java"
+    id "application"
+    id "com.gradleup.shadow" version "8.3.3"
+}
+
+group = "me.theentropyshard"
+version = "0.0.1"
+
+jar {
+    manifest {
+        attributes(
+                "Main-Class": "me.theentropyshard.xkcdbot.Main"
+        )
+    }
+}
+
+run {
+    mainClass = "me.theentropyshard.xkcdbot.Main"
+}
+
+shadowJar {
+    archivesBaseName = "bot"
+    archiveVersion = ""
+    archiveClassifier = ""
+    mainClassName = "me.theentropyshard.xkcdbot.Main"
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    telegrambots = "7.10.0"
+    gson = "2.11.0"
+    okhttp = "4.12.0"
+    retrofit = "2.11.0"
+}
+
+dependencies {
+    implementation "org.telegram:telegrambots-longpolling:$telegrambots"
+    implementation "org.telegram:telegrambots-client:$telegrambots"
+    implementation "com.google.code.gson:gson:$gson"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+}
